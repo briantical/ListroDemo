@@ -16,15 +16,15 @@ export default class Services extends Component{
     recording: false,
     speaking: false,
     tasks:[
-            'Finishing watson today',
-            'Embedding the conversation and natural speech',
-            'Finishing the Expanse a must watch',
-            'My hepatitis B vaccination',
-            'Going to the Bank',
-            'visit ar.mak.ac.ug',
-            'Recalibration of the computer clock',
-            'Go a pick up Emma from the airport',
-            'Looking forward to the next Premiere',
+            'Finishing watson today: include the natural language, conversation features',
+            'Read through the released documentation for React Native 0.56.0',
+            'Finishing the UI clone for whatsApp',
+            'My hepatitis B vaccination: scheduled for tomorrow ',
+            'Going to the Bank. Make the monthly deposit',
+            'visit ar.mak.ac.ug check your results',
+            'Recalibration of the computer clock. Reconfigure the system',
+            'Go a pick up Emma from the airport Its at 10: 00',
+            'Looking forward to the next Premiere Ant Man',
         ],
     newEntry: [],
     modalVisible: false
@@ -63,8 +63,8 @@ export default class Services extends Component{
   componentDidMount(){
     this.checkPermission()
 
-    SpeechToText.initialize('034d505a-cc8a-4715-a58c-4c6c4e3a1c03', 'mqRCmdYwY4dv')
-    TextToSpeech.initialize("60ce406e-f8a9-4bad-aeb3-3e55014f9e12", "jjHWNiszYM1q")
+    SpeechToText.initialize('YOUR_IBM_SpeechToText_USERNAME', 'YOUR_PASSWORD')
+    TextToSpeech.initialize('YOUR_IBM_TextToSpeech_USERNAME', 'YOUR_PASSWORD')
   }
 
   checkPermission(){
@@ -98,7 +98,7 @@ export default class Services extends Component{
   render(){
     return(
       <View style={styles.container}>
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
             {
                 this.state.tasks.map((task, index)=>(
                     <DisplayLists key={index} content={task} position={index + 1} readOut={()=>this.readout(task)}/>

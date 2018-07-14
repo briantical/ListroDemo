@@ -1,26 +1,44 @@
-import React from 'react'
+import React, {Component} from 'react'
 import {
-  View, Text, StyleSheet, Image,TouchableOpacity
+  View, Text, StyleSheet, Image,TouchableOpacity,TextInput
 } from 'react-native'
+import {Header , Icon,Body, Left, Right, Drawer} from 'native-base'
+import UserProfile from './UserProfile'
 
-export default  ()=>(    
-    <View style={styles.navBar}>
-        <TouchableOpacity style={styles.homeNav}>
-             <Image style={styles.homeIcon} source={require('../assets/Icons/menu.png')}/> 
-             <Text style={styles.homeName}>Home</Text>
-        </TouchableOpacity>
-        <View style={styles.userProfile}>
-            <Image style={styles.userImage} source={require('../assets/Images/user.jpg')}/> 
-        </View>        
-    </View>
-)
+export default class NavBar extends Component{
+    state={
+        modalVisible: false,        
+    }
+    drawModal(){
+        this.setState({modalVisible: true})
+    }
+    closeModal(){
+        this.setState({modalVisible: false})
+    }
+    render(){
+        return(
+           <Header style={styles.navBar} >
+                <Left >
+                    <TouchableOpacity style={styles.homeNav} onPress={()=> this.drawModal()}>
+                        <Icon name="menu" style={styles.homeIcon} />                  
+                    </TouchableOpacity>
+                </Left>
+                <UserProfile visible={this.state.modalVisible} closeDraw={()=>this.closeModal()}/>
+                <View style={styles.userProfile}>
+                    <Icon name="search" style={styles.homeIcon}  />           
+                </View>        
+            </Header> 
+        )
+    }
+}
 
 const styles = StyleSheet.create({
   navBar:{    
     height: 40,
     width: 100 + '%',
-    flexDirection: 'row',
     backgroundColor: '#3F8EFC',
+    borderColor:'#FFF',
+    flexDirection: 'row',    
     alignItems: 'center',
     paddingHorizontal: 6,
     justifyContent: 'space-between',
@@ -31,8 +49,6 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
     paddingRight: 3,
-    borderColor: '#FFF',
-    borderRightWidth: StyleSheet.hairlineWidth,
   },
   homeName:{
     fontSize: 15,    
@@ -40,19 +56,17 @@ const styles = StyleSheet.create({
     paddingLeft: 3,
   },
   homeIcon:{
-    height: 25,
-    width: 25,
-    tintColor: '#FFF'
+    color: '#FFF'
   },
-  userProfile:{    
+  userProfile:{
+    paddingRight: 4,
+    flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'center',
   },
   userImage:{
-    height: 30,
-    width: 30,
-    borderRadius: 30,
-    borderColor:'#F3EFF5',
-    borderWidth: StyleSheet.hairlineWidth,
+    height: 20,
+    width: 20,
+    tintColor: '#F7F9F9',    
   }    
 })

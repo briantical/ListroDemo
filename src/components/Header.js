@@ -2,28 +2,26 @@ import React from 'react'
 import {
   View, Text, StyleSheet, Image
 } from 'react-native'
-
+import {Header} from 'native-base'
 export default  ()=>(
-    <View style={styles.header}>
+    <Header style={styles.header}>
         <View style={styles.appTitle}>
              <Text style={styles.listroName}>LISTRO</Text>
         </View>
         <View style={styles.appIcon}>
             <Image style={styles.listroIcon} source={require('../assets/Icons/listroIcon.png')}/> 
         </View>    
-    </View>
+    </Header>
 )
 
 const styles = StyleSheet.create({
   header:{    
     height: 50,
     width: 100 + '%',
-    flexDirection: 'row',
-    backgroundColor: '#3F8EFC',
+    flexDirection: 'row',    
     justifyContent: 'center',
     alignItems: 'center',
-    borderColor: '#F3EFF5',
-    borderBottomWidth: StyleSheet.hairlineWidth,
+    backgroundColor: '#3F8EFC',    
   },
   appTitle:{
     justifyContent: 'center',
