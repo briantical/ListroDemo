@@ -1,20 +1,16 @@
-import React,{Component} from 'react'
-import {
-  View, Text, StyleSheet, Image,TouchableOpacity,Modal
+import React, {Component} from 'react'
+import {Spinner} from 'native-base'
+import{
+  StyleSheet, View,Text, Alert,TouchableOpacity,Image,ScrollView
 } from 'react-native'
 import {Container, Header, Content, List, ListItem,Icon, Left, Body, Right, Switch, Thumbnail, Button,Footer} from 'native-base'
 
-export default  (props)=>(
-    <View  style={styles.full}>
-        <Modal
-            animationType="fade"
-            transparent={true}            
-            visible={props.visible}
-            onRequestClose={() => {
-                console.log('Drawer closed')
-            }}
-        >  
-         <Container style={styles.container} >
+export default class App extends Component{
+  
+  render(){
+    return(
+      <View style={styles.container}>
+        <Container style={styles.container} >
            <Header style={styles.headerDetails}>
              <View style={styles.personalDetails}>
                 <Text style={styles.nameDetails}>
@@ -81,7 +77,7 @@ export default  (props)=>(
                     <Icon active name="arrow-forward" />
                 </Right>
           </ListItem>
-           <ListItem icon onPress={props.closeDraw}>
+           <ListItem icon>
                 <Left>
                     <Button style={{ backgroundColor: "#007AFF" }}>
                         <Icon active name="close" />
@@ -90,29 +86,26 @@ export default  (props)=>(
                 <Body>
                     <Text>Quit</Text>
                 </Body>                
-          </ListItem>
-           <ListItem>
-            <Text>All Rights Reserved. Briantical</Text>
-        </ListItem>
-        </Content>                                         
-         </Container>        
-        </Modal>  
-    </View>
-)
-const styles = StyleSheet.create({
-  content:{
-      backgroundColor: '#FFF',
-  },
+          </ListItem>           
+        </Content>
+         <Footer style={styles.myFooter}>
+            <Text style={{color: '#FFF',}}>All Rights Reserved. Briantical</Text>
+            <Text style={{color: '#FFF',}}>2018</Text>
+        </Footer>
+         </Container> 
+      </View>
+    )
+  }
+}
+
+  const styles = StyleSheet.create({ 
   container:{
-      marginTop: 50,      
-      marginRight:30 + '%',
-      backgroundColor: 'transparent',
+      flex: 1,
   },
   headerDetails:{
       height: 50,      
       backgroundColor: '#3F8EFC',
-      borderColor: '#FFF',
-      borderTopRightRadius: 10,
+      borderColor: '#FFF',      
       borderWidth: StyleSheet.hairlineWidth,
   },                    
   personalDetails:{
@@ -127,5 +120,11 @@ const styles = StyleSheet.create({
       color: '#FFF',
       fontStyle: 'italic',
       fontSize: 10,
+  },
+  myFooter:{
+      flexDirection: 'column',
+      backgroundColor: '#3F8EFC',
+      justifyContent: 'center',
+      alignItems: 'center'
   }
 })

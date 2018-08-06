@@ -63,8 +63,8 @@ export default class Services extends Component{
   componentDidMount(){
     this.checkPermission()
 
-    SpeechToText.initialize('YOUR_IBM_SpeechToText_USERNAME', 'YOUR_PASSWORD')
-    TextToSpeech.initialize('YOUR_IBM_TextToSpeech_USERNAME', 'YOUR_PASSWORD')
+    SpeechToText.initialize("034d505a-cc8a-4715-a58c-4c6c4e3a1c03", "mqRCmdYwY4dv")
+    TextToSpeech.initialize("60ce406e-f8a9-4bad-aeb3-3e55014f9e12", "jjHWNiszYM1q")
   }
 
   checkPermission(){

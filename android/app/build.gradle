@@ -136,8 +136,7 @@ android {
     }
 }
 
-dependencies {
-    compile project(':react-native-vector-icons')
+dependencies {    
     compile project(':react-native-audio-record')
     compile project(':react-native-watson')
     compile fileTree(dir: "libs", include: ["*.jar"])
